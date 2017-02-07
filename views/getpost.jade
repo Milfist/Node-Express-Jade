@@ -1,0 +1,16 @@
+extends layouts/layout
+
+block content
+ h2 #{title}
+ form(method='post', action='/getpost')
+   fieldset
+      legend Add a user
+      p
+         label First name
+         input(name='fname', value='#{user.fname}')
+      p
+         label Last name
+         input(name='surname', value='#{user.surname}')
+      p
+         input(type='submit' ,value='Save')   
+

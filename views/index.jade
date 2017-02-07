@@ -1,0 +1,41 @@
+extends layouts/layout
+
+block content
+  h1= 'Code examples Jade'
+  p Welcome to #{title}
+
+  - var name = 'Miguel';
+  p Hello #{name}!
+
+  p Bucle de números con Each
+  -numbers=['One','Two','Three','Four','Five']
+  -each number in numbers
+    p=number
+
+  p Bucle de nombres con For (Mixin)
+  -names = ['David', 'Ana', 'Rodrigo']
+  mixin mNames(names)
+    ul
+      -for name in names
+        li=name
+  mixin mNames(names)
+
+  p Pintamos un objeto con un Each
+  -person = {Nombre: 'Mike', Apellido: 'Williams', Edad: '30'}
+  -each val, key in person
+   li.negrita.cursiva #{key}: #{val}
+
+  p Condicionales
+  -var trabajando = true;
+  -if (trabajando)
+    p Dando lo todo con Node + Express + Jade!
+  -else
+    p Descansando un poco!
+
+  p Metemos un script
+  script.
+    alert('Ejecutando JS en Jade')
+
+  p Mixin
+  -names = ['Mario', 'Link', 'Samus']
+  mixin mNames(names)

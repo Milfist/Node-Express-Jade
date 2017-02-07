@@ -1,0 +1,12 @@
+extends layouts/layout
+
+block content
+ h2 #{title}
+ form(method='post', action='/filesystem')
+   fieldset
+      legend Save name
+      p
+         label First name
+         input(name='first_name', value='#{fname}')
+      p
+         input(type='submit' ,value='Save') 

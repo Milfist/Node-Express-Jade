@@ -1,0 +1,15 @@
+extends ../layouts/bootstrap_layout
+
+block content
+
+  h1 #{title}
+
+  form(method='post', action='/mongoSave')
+    fieldset
+      legend Add a task
+      div.clearfix
+        div.input
+          input(name='task', class='xlarge')
+        div.actions
+          input(type='submit', value='Save', class='btn primary')
+          button(type='reset', class='btn') Cancel

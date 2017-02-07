@@ -1,0 +1,41 @@
+extends ../layouts/layout
+
+block content
+
+  h1 #{title}
+  
+  - if(mensaje != 'undefined' && clase != 'undefined')
+    - if (clase == 'success')
+      div.success
+        p= mensaje
+    - if (clase == 'error')
+      div.error
+        p= mensaje
+    - if (clase == 'info')
+      div.info
+        p= mensaje
+    - if (clase == 'warning')
+      div.warning
+        p= mensaje
+
+  label Create 
+    a(href='/mongoSave') new task 
+  - if(docs.length)
+    table
+      tr
+        th
+          each task in docs
+            tr
+              td #{task.task}
+              td
+                a.btn(href="/mongoUpdate/#{task.id}/edit") Edit
+              td
+                form(method='post', action='/mongoUpdate/#{task.id}/edit')
+                  button.btn(type='submit') Edit
+              td
+                a.btn(href="/mongoRemove/#{task.id}/remove") Delete
+              td
+                form(method='post', action='/mongoRemove/#{task.id}/remove')
+                  button.btn(type='submit') Delete
+  - else
+    p No hay tareas
